@@ -1,0 +1,437 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: var(--color-background-primary);
+    --bg2: var(--color-background-secondary);
+    --text: var(--color-text-primary);
+    --muted: var(--color-text-secondary);
+    --border: var(--color-border-tertiary);
+    --border2: var(--color-border-secondary);
+    --accent: #B04B1F;
+    --accent-light: #FAECE7;
+    --accent-mid: #D85A30;
+    --sage: #1D9E75;
+    --sage-light: #E1F5EE;
+    --plum: #534AB7;
+    --plum-light: #EEEDFE;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --serif: 'Lora', Georgia, serif;
+    --sans: 'DM Sans', var(--font-sans), sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .article {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+    font-family: var(--serif);
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  .pub-line {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pub-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-border-secondary); }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+  .deck {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 0.5px solid var(--border2);
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 1.4rem;
+  }
+
+  p.muted {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+    margin: 2.75rem 0 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  h2 .num {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .drop-cap::first-letter {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 62px;
+    line-height: 0.85;
+    float: left;
+    margin: 5px 10px 0 0;
+    color: var(--accent);
+  }
+
+  strong { font-weight: 600; color: var(--text); }
+  em { font-style: italic; }
+
+  .pull-quote {
+    margin: 2.25rem 0;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--accent-mid);
+    background: var(--accent-light);
+    font-family: var(--serif);
+    font-size: 19px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--accent);
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+  }
+
+  .example-block {
+    margin: 1.5rem 0 1.75rem;
+    border: 0.5px solid var(--border2);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .example-header {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    background: var(--bg2);
+    border-bottom: 0.5px solid var(--border);
+    color: var(--muted);
+  }
+  .example-row {
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    gap: 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .example-row:last-child { border-bottom: none; }
+  .example-tag {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    border-right: 0.5px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    padding-top: 14px;
+  }
+  .tag-hr { color: var(--sage); }
+  .tag-it { color: var(--accent); }
+  .tag-legal { color: var(--plum); }
+  .example-text {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    color: var(--text);
+    padding: 12px 16px;
+    line-height: 1.6;
+  }
+  .example-text em { color: var(--muted); font-style: italic; }
+
+  .note {
+    background: var(--bg2);
+    border-radius: var(--border-radius-md);
+    padding: 14px 18px;
+    margin: 1.5rem 0;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    border-left: 3px solid var(--border2);
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+  }
+  .note strong { color: var(--text); }
+
+  .section-rule {
+    height: 0.5px;
+    background: var(--border2);
+    margin: 2.75rem 0 0;
+  }
+
+  .closing-block {
+    margin-top: 2.75rem;
+    padding: 1.75rem 2rem;
+    background: var(--bg2);
+    border-radius: var(--border-radius-lg);
+    border: 0.5px solid var(--border);
+  }
+  .closing-block p {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-style: italic;
+    margin-bottom: 0;
+    color: var(--muted);
+  }
+  .closing-block p strong {
+    font-style: normal;
+    color: var(--text);
+  }
+</style>
+
+<article class="article">
+  <h2 style="margin-top:0; font-size:13px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; font-family:var(--sans);">Operations · Teamwork</h2>
+
+  <h1>The seven things that make an SLA <em>actually work.</em></h1>
+
+  <p class="deck">Most service level agreements are written once, praised briefly, and quietly shelved. Here's what the good ones do differently — with real examples across HR, IT, and Legal.</p>
+
+  <p class="drop-cap">If you've ever been on a team that has an SLA, you already know how this usually goes. Someone proposes it — usually after a frustrating delay or a dropped request. People nod. A document gets drafted. Both sides sign off. And then, sometime around month three, it stops being used as a guide and starts being cited only during arguments.</p>
+
+  <p>It's not that SLAs are a bad idea. It's that most of them are written as intentions rather than agreements. They describe what everyone hopes will happen, not what both parties are actually committing to.</p>
+
+  <p>A good SLA is closer to a contract than a target. It tells both sides exactly what they've signed up for, under what conditions, and what happens when things slip. Getting there isn't complicated — but it does require being precise about a handful of things that most SLAs handle vaguely.</p>
+
+  <p>Here are the seven things that separate a working SLA from a decorative one.</p>
+
+  <div class="section-rule"></div>
+
+  <h2><span class="num">01</span>Name a person, not a department.</h2>
+
+  <p>Every SLA has two sides: the team providing the service, and the team requesting it. The first thing most SLAs get lazy about is who, specifically, is accountable on each side.</p>
+
+  <p>"The legal team will handle this" sounds fine until the legal team restructures, someone goes on leave, or the team grows from three people to twelve. When the owner is a department, accountability spreads thin — and accountability that belongs to everyone belongs to no one.</p>
+
+  <p>Write down a name. Write down their title. Write down who they escalate to when they can't fulfill the agreement. Do this for both sides.</p>
+
+  <div class="example-block">
+    <div class="example-header">How it looks in practice</div>
+    <div class="example-row">
+      <div class="example-tag tag-legal">Legal</div>
+      <div class="example-text">Owner: <em>Sarah Chen, Legal Ops Lead</em>. Escalation: <em>James Park, General Counsel</em>. Requesters: <em>Sales and Procurement teams</em>.</div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-it">IT</div>
+      <div class="example-text">Owner: <em>Marcus Lee, Helpdesk Manager</em>. Escalation: <em>Director of IT Infrastructure</em>. Requesters: <em>All employees</em>.</div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-hr">HR</div>
+      <div class="example-text">Owner: <em>Priya Shah, HR Business Partner</em>. Escalation: <em>VP of People Ops</em>. Requesters: <em>Hiring managers</em>.</div>
+    </div>
+  </div>
+
+  <p>If you can't put a name in that field, the SLA isn't ready. The conversation about who owns it needs to happen before the document is finalized — not when something falls through the cracks.</p>
+
+  <div class="section-rule"></div>
+
+  <h2><span class="num">02</span>Write down what you're not covering.</h2>
+
+  <p>Scope creep is the slow death of most team agreements. It rarely happens all at once. It happens one edge case at a time, each one reasonable on its own, until the team is fielding requests they never agreed to handle and have no process to support.</p>
+
+  <p>The most useful part of an SLA's scope section isn't the list of what's included — it's the explicit list of what isn't. That list does two things: it protects the provider from reasonable-sounding requests that fall outside their capacity, and it tells the requester where to go instead, so they're not stuck.</p>
+
+  <div class="example-block">
+    <div class="example-header">In scope vs. out of scope</div>
+    <div class="example-row">
+      <div class="example-tag tag-legal">Legal</div>
+      <div class="example-text"><strong>In:</strong> Standard NDA review, MSA review under $500k. <strong>Out:</strong> M&A diligence, litigation support, regulatory filings. <em>Those go through external counsel.</em></div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-it">IT</div>
+      <div class="example-text"><strong>In:</strong> Company-issued laptop, monitor, peripherals, account provisioning. <strong>Out:</strong> Personal device support, software not on the approved list. <em>Those go through the software request portal.</em></div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-hr">HR</div>
+      <div class="example-text"><strong>In:</strong> Offer letters, onboarding paperwork, role changes. <strong>Out:</strong> Performance disputes, compensation negotiations. <em>Those go through the HRBP directly.</em></div>
+    </div>
+  </div>
+
+  <p>The out-of-scope list is worth spending real time on. It's not about being unhelpful — it's about being clear, so that when an out-of-scope request comes in, both sides have already agreed on what happens next.</p>
+
+  <div class="section-rule"></div>
+
+  <h2><span class="num">03</span>Say exactly when the clock starts.</h2>
+
+  <p>This is the field where even well-intentioned SLAs fall apart. "We'll turn this around within five business days" sounds specific. But five business days from when? From when the email lands in an inbox? From when the right person opens it? From when the ticket gets triaged?</p>
+
+  <p>If two people reading the SLA would point to different start times, the trigger isn't written yet.</p>
+
+  <div class="pull-quote">The trigger is the most precise sentence in the document. It names the exact condition — not an event category, but a specific, observable moment — that starts the clock.</div>
+
+  <div class="example-block">
+    <div class="example-header">When the clock starts</div>
+    <div class="example-row">
+      <div class="example-tag tag-legal">Legal</div>
+      <div class="example-text">Clock starts when a ticket is submitted with the <em>final contract attached</em> (not a draft), the counterparty named, and the deal value and close date filled in.</div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-it">IT</div>
+      <div class="example-text">Clock starts when the ticket has been <em>auto-triaged to the correct queue</em> — not when the ticket is opened, but when it reaches the right team.</div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-hr">HR</div>
+      <div class="example-text">Clock starts when the hiring manager submits an <em>approved requisition</em> with the compensation band, proposed start date, and reporting line all included.</div>
+    </div>
+  </div>
+
+  <p>These examples are all deliberate about something: the clock doesn't start until the requester has done their part. An incomplete request doesn't start the clock. That's not punitive — it's fair, and it sets a clear expectation for both sides.</p>
+
+  <div class="section-rule"></div>
+
+  <h2><span class="num">04</span>Be honest about what "done" means.</h2>
+
+  <p>Response, acknowledgement, and resolution are three different commitments. Most SLAs blur them together, which means the provider thinks they've fulfilled their obligation when the requester still feels like they haven't received what they asked for.</p>
+
+  <p>An acknowledgement says "I saw your request." A response says "I've looked at it and here's where things stand." A resolution says "The problem is solved." When you write an SLA, decide which one you're actually committing to — and be honest with yourself about whether that's what the requester actually needs.</p>
+
+  <div class="example-block">
+    <div class="example-header">What "done" looks like</div>
+    <div class="example-row">
+      <div class="example-tag tag-legal">Legal</div>
+      <div class="example-text">Done when: the <em>redlined contract is returned to the requester</em> with a written summary of proposed changes — not just "reviewed and sent back."</div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-it">IT</div>
+      <div class="example-text">Done when: the user <em>confirms they can log in and complete a task</em> — not when IT marks the ticket resolved from their end.</div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-hr">HR</div>
+      <div class="example-text">Done when: the offer letter has been <em>sent to the candidate and CC'd to the hiring manager</em> — not when it's drafted internally.</div>
+    </div>
+  </div>
+
+  <p>Notice that in the IT example, "done" is defined from the requester's perspective, not the provider's. That's worth thinking about in your own context. If the person who asked for help doesn't yet have what they needed, the SLA shouldn't be closeable.</p>
+
+  <div class="section-rule"></div>
+
+  <h2><span class="num">05</span>Use three priority levels — and hold the line on them.</h2>
+
+  <p>Five priority levels barely work. Ten get gamed. When you have too many tiers, people quickly learn which one gets their request handled fastest, and suddenly everything is a P1.</p>
+
+  <p>Three tiers, defined clearly, are almost always enough. The definitions matter more than the labels:</p>
+
+  <ul style="font-family:var(--sans); font-size:15px; padding-left:1.5rem; margin-bottom:1.4rem; line-height:2; color:var(--text);">
+    <li><strong>P1</strong> — Stop everything. Something is actively broken or a deal is at immediate risk.</li>
+    <li><strong>P2</strong> — This week. Significant but not yet on fire. Has a real deadline.</li>
+    <li><strong>P3</strong> — This cycle. Standard, schedulable work with no urgent constraint.</li>
+  </ul>
+
+  <div class="example-block">
+    <div class="example-header">Priority tiers — Legal, contract review</div>
+    <div class="example-row">
+      <div class="example-tag tag-legal">P1</div>
+      <div class="example-text">Active deal at risk of closing this week. <em>Acknowledge within 2 hours, resolve within 1 business day.</em></div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-legal">P2</div>
+      <div class="example-text">Standard MSA or vendor agreement with a known close date. <em>Acknowledge within 1 business day, resolve within 5.</em></div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-legal">P3</div>
+      <div class="example-text">Renewals, NDAs, low-risk amendments. <em>Acknowledge within 2 business days, resolve within 10.</em></div>
+    </div>
+  </div>
+
+  <div class="note"><strong>A useful rule of thumb:</strong> if you can't put an incoming request into one of your three tiers without having to stretch the definition, something in the definitions needs adjusting — not the number of tiers.</div>
+
+  <div class="section-rule"></div>
+
+  <h2><span class="num">06</span>Write down what the requester owes.</h2>
+
+  <p>This is the part most SLAs skip entirely. They bind the provider to a set of commitments, while leaving the other side's responsibilities implicit. That creates a one-sided agreement — and one-sided agreements get gamed.</p>
+
+  <p>If Legal needs the final contract to begin the clock (not a draft, not a folder of eight versions), say so explicitly. If IT needs the asset tag and a screenshot of the error, require it. If HR needs an approved requisition with the compensation band filled in, make that a stated precondition.</p>
+
+  <div class="example-block">
+    <div class="example-header">What requesters are responsible for</div>
+    <div class="example-row">
+      <div class="example-tag tag-legal">Legal</div>
+      <div class="example-text">Final contract attached (not draft). Counterparty named. Deal value and close date in the ticket. Business owner identified. <em>Missing any of these, the ticket is returned unfulfilled and the clock hasn't started.</em></div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-it">IT</div>
+      <div class="example-text">Asset tag included. Screenshot of the error. Steps to reproduce. Whether the user is fully blocked or can still work around the issue.</div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-hr">HR</div>
+      <div class="example-text">Approved requisition submitted. Compensation band confirmed. Proposed start date, reporting line, and manager name all included.</div>
+    </div>
+  </div>
+
+  <p>Being explicit about requester obligations isn't adversarial — it's respectful. It tells the requester exactly what they need to do to get the service they need, and it removes the guesswork from both sides.</p>
+
+  <div class="section-rule"></div>
+
+  <h2><span class="num">07</span>Decide what happens when it slips — before it slips.</h2>
+
+  <p>This is the test of whether an SLA is real: when a miss happens, does something happen? Not a punishment, but something. A review, an automatic alert to the escalation owner, a postmortem after the third miss in a quarter, a note to leadership.</p>
+
+  <p>An SLA without a defined consequence for misses is aspirational, not contractual. The miss surface isn't about blame — it's about signal. It tells both sides that the agreement is being tracked and that slippage matters.</p>
+
+  <div class="example-block">
+    <div class="example-header">When a miss occurs</div>
+    <div class="example-row">
+      <div class="example-tag tag-legal">Legal</div>
+      <div class="example-text">Automated note to the GC and the requester's VP. Logged in the quarterly review. Postmortem triggered if more than 2 misses in a quarter.</div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-it">IT</div>
+      <div class="example-text">Alert fires in #it-ops. Miss rate tracked on a live dashboard. Weekly review with the helpdesk manager.</div>
+    </div>
+    <div class="example-row">
+      <div class="example-tag tag-hr">HR</div>
+      <div class="example-text">Hiring manager and HRBP both notified. Miss logged in monthly report to People leadership.</div>
+    </div>
+  </div>
+
+  <p>There's one more thing worth building in here: a renegotiation path. Volume spikes. Headcount drops. A team that's been reliably meeting SLAs for two years might not be able to meet them in Q4 when three people are on leave. A good SLA includes a defined process for "we cannot honor this right now" — not a complete rewrite, but a temporary deferral with written justification and a timeline to revisit.</p>
+
+  <p>Silent misses, where the provider knows they've slipped but nothing is said, destroy trust faster than an honest "we're underwater right now" ever would.</p>
+
+  <div class="section-rule"></div>
+
+  <div class="closing-block">
+    <p>The simplest test for whether an SLA will hold up: <strong>read it with someone from the other side.</strong> Walk through a hypothetical request together — where does the clock start, what counts as done, who owns it if something goes wrong? If both of you point to the same answers, you've written something real. If you don't, you have a productive conversation ahead of you — and it's much better to have it now than six months from now in a heated Slack thread.</p>
+  </div>
+</article>
